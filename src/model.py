@@ -1,3 +1,6 @@
+# MIT License
+# Copyright (c) 2025 Doncilă Denis
+
 import tensorflow as tf
 from tensorflow import keras
 from keras import layers

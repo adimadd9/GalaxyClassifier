@@ -1,3 +1,6 @@
+# MIT License
+# Copyright (c) 2025 Doncilă Denis
+
 import pandas as pd
 
 def load_data(file_path):

@@ -1,3 +1,6 @@
+# MIT License
+# Copyright (c) 2025 Doncilă Denis
+
 import os
 import sys
 import customtkinter as ctk
