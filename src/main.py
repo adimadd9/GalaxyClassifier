@@ -13,53 +13,51 @@ from preprocess import load_data
 import matplotlib.pyplot as plt
 from PIL import Image
 
-# Configurare tema pentru interfață
-ctk.set_appearance_mode("dark")  # Mod: "dark" sau "light"
-ctk.set_default_color_theme("blue")
+# Setting the theme for the interface
+ctk.set_appearance_mode("dark")  # Mode: "dark" or "light"
+ctk.set_default_color_theme("blue") # Default color theme: "blue"
 
+# Returns the model file path, considering whether the application is run as an executable or a Python script.
 def get_model_path():
-    """Returnează calea fișierului modelului, luând în considerare dacă aplicația este rulată ca executabil sau script Python."""
-    if getattr(sys, 'frozen', False):  # Dacă aplicația este rulată ca executabil
-        # Căutăm modelul în directorul unde se află fișierul executabil
+    if getattr(sys, 'frozen', False):
         return os.path.join(sys._MEIPASS, "model/galaxy_classifier.h5")
     else:
-        # Dacă aplicația este rulată dintr-un script, utilizăm calea relativă
         return "model/galaxy_classifier.h5"
 
-# Încarcă modelul
+# Load the model
 model_path = get_model_path()
 model = tf.keras.models.load_model(model_path)
 
-# Încarcă setul de date pentru normalizare
+# Load the dataset for normalization
 features, _ = load_data("data/galaxies.csv")
 scaler = StandardScaler()
 scaler.fit(features)
 
-# Crearea ferestrei principale
+# Creating the main window
 root = ctk.CTk()
 root.title("Clasificare Galaxii")
 root.geometry("500x600")
 root.resizable(False, False)
 root.iconbitmap("img/icon.ico")
 
-# Încărcarea imaginii de fundal
+# Loading the background image
 bg_image = ctk.CTkImage(light_image=Image.open("img/bg.jpg"),
                         dark_image=Image.open("img/bg.jpg"),
                         size=(500, 600))
 
-# Adăugarea imaginii de fundal
+# Adding the background image
 bg_label = ctk.CTkLabel(root, image=bg_image, text="")  
-bg_label.place(relwidth=1, relheight=1)  # Fundal pe toată fereastra
+bg_label.place(relwidth=1, relheight=1)
 
-# Crearea unui Frame semi-transparent peste fundal
+# Creating a semi-transparent frame over the background
 main_frame = ctk.CTkFrame(root, corner_radius=15, fg_color=("gray85", "gray20"), width=450, height=550)
 main_frame.place(relx=0.5, rely=0.5, anchor="center")
 
-# Titlu
+# Title
 title_label = ctk.CTkLabel(main_frame, text="Clasificare Galaxii", font=("Arial", 18, "bold"))
 title_label.pack(pady=15)
 
-# Lista de caracteristici și intrări
+# List of features and entries
 feature_names = ['P_EL', 'P_CW', 'P_ACW', 'P_EDGE', 'P_DK', 'P_MG', 'P_CS']
 entries = []
 categories = ["SPIRAL", "ELLIPTICAL", "UNCERTAIN"]
@@ -75,7 +73,7 @@ for feature in feature_names:
     entry.pack(side="right", padx=10)
     entries.append(entry)
 
-# Funcția de predicție
+# Prediction function
 def predict():
     try:
         input_data = np.array([[float(entry.get()) for entry in entries]])
@@ -86,7 +84,7 @@ def predict():
     except ValueError:
         messagebox.showerror("Eroare", "Completează toate câmpurile cu valori numerice valide.")
 
-# Funcția de încărcare CSV
+# CSV loading function
 def load_csv():
     try:
         file_path = filedialog.askopenfilename(filetypes=[("CSV files", "*.csv")])
@@ -99,8 +97,7 @@ def load_csv():
     except Exception as e:
         messagebox.showerror("Eroare", f"Nu s-a putut încărca fișierul: {str(e)}")
 
-
-# Funcția de procesare CSV
+# CSV processing function
 def process_csv(df):
     try:
         if df is None or df.empty:
@@ -111,7 +108,7 @@ def process_csv(df):
         predictions = model.predict(input_data_scaled, verbose=0)
         df['Predicted_Class'] = [categories[np.argmax(p)] for p in predictions]
         
-        # Verifică dacă directorul există și creează-l dacă nu
+        # Check if the directory exists and create it if not
         if not os.path.exists("data"):
             os.makedirs("data")
         
@@ -120,7 +117,7 @@ def process_csv(df):
     except Exception as e:
         messagebox.showerror("Eroare", str(e))
 
-# Funcția de afișare grafic
+# Graph display function
 def show_results():
     df = pd.read_csv("data/predictions.csv")
     counts = df["Predicted_Class"].value_counts()
@@ -131,7 +128,7 @@ def show_results():
     plt.title("Distribuția Clasificărilor")
     plt.show()
 
-# Funcția de descărcare a fișierului de predicții
+# Predictions file download function
 def download_predictions():
     try:
         file_path = filedialog.asksaveasfilename(defaultextension=".csv",
@@ -144,7 +141,7 @@ def download_predictions():
     except Exception as e:
         messagebox.showerror("Eroare", "Nu există predicții disponibile pentru descărcare!")
 
-# Crearea butoanelor
+# Creating the buttons
 button_frame = ctk.CTkFrame(main_frame, fg_color="transparent")
 button_frame.pack(pady=10)
 
@@ -153,5 +150,5 @@ ctk.CTkButton(button_frame, text="Încarcă CSV", fg_color="#53316c", hover_colo
 ctk.CTkButton(button_frame, text="Vezi Grafic", fg_color="#53316c", hover_color="#432857", command=show_results, width=200).pack(pady=5)
 ctk.CTkButton(button_frame, text="Descarcă predicțiile", fg_color="#53316c", hover_color="#432857", command=download_predictions, width=200).pack(pady=5)
 
-# Pornirea aplicației
+# Starting the application
 root.mainloop()
