@@ -1,6 +1,6 @@
 # Galaxy Classification GUI
 
-This project is a graphical user interface (GUI) for classifying galaxies based on input features. It uses a trained deep learning model to predict the type of galaxy and provides visualization options for analyzing the results.
+This is a university project - a graphical user interface (GUI) for classifying galaxies based on input features. It uses a trained deep learning model to predict the type of galaxy and provides visualization options for analyzing the results.
 
 ## Features
 - **Manual Classification**: Users can input galaxy features and get a predicted classification.
@@ -59,8 +59,6 @@ main.exe
 ## File Structure
 ```
 project-folder/
-│-- model/
-│   └── galaxy_classifier.h5   # Trained deep learning model
 │-- data/
 │   ├── galaxies.csv           # Example dataset (must be provided)
 │   ├── predictions.csv        # The CSV file with the made predictions
@@ -68,12 +66,13 @@ project-folder/
 │-- img/
 │   ├── bg.jpg                 # Background image
 │   └── icon.ico               # Application icon
+│-- model/
+│   └── galaxy_classifier.h5   # Trained deep learning model
 │-- src/
-│   ├── main.py                     # Main application script
-│   ├── preprocess.py               # Data preprocessing functions
-│   ├── model.py                    # Model build function
-│   └── train.py                    # Script for training the model
-│-- README.md                   # Project documentation
+│   ├── main.py                # Main application script
+│   ├── preprocess.py          # Data preprocessing functions
+│   ├── model.py               # Model build function
+│   └── train.py               # Script for training the model
 ```
 
 ## Troubleshooting
