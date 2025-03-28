@@ -1,0 +1,31 @@
+OBJID – Identificatorul unic al galaxiei din baza de date, folosit pentru a o distinge de alte galaxii.
+
+RA (Right Ascension) – Coordonata de ascensie dreaptă, similară cu longitudinea pe Pământ, utilizată pentru a localiza galaxia pe cer.
+
+DEC (Declination) – Coordonata de declinație, similară cu latitudinea pe Pământ, utilizată pentru a localiza galaxia pe cer.
+
+NVOTE – Numărul de voturi primite pentru clasificarea galaxiei în cele șase categorii. Este un indicator al numărului de clasificări pentru fiecare galaxie.
+
+P_EL – Procentajul de voturi care clasifică galaxia ca fiind de tip elliptic.
+
+P_CW – Procentajul de voturi care clasifică galaxia ca fiind de tip spiral cu brațe care se răsucesc în sensul acelor de ceasornic (Clockwise).
+
+P_ACW – Procentajul de voturi care clasifică galaxia ca fiind de tip spiral cu brațe care se răsucesc în sens invers acelor de ceasornic (Anti-clockwise).
+
+P_EDGE – Probabilitatea ca galaxia să fie de tip edge-on (cu muchiile vizibile, adică un unghi de observare care o face să arate plată).
+
+P_DK – Probabilitatea ca galaxia să fie o galaxie întunecată sau cu un aspect mai obscur.
+
+P_MG – Probabilitatea ca galaxia să fie o galaxie Magellan sau una cu un caracter similar, probabil referindu-se la galaxiile apropiate din grupul local (precum Magellanic Clouds).
+
+P_CS – Procentajul de voturi care clasifică galaxia ca fiind de tip spiral clasic.
+
+P_EL_DEBIASED – Votul ajustat pentru clasificarea galaxiei ca elliptic, ținând cont de eventualele distorsiuni sau biasuri.
+
+P_CS_DEBIASED – Votul ajustat pentru clasificarea galaxiei ca spiral clasic, similar cu P_EL_DEBIASED, dar pentru galaxii de tip spiral.
+
+SPIRAL – Flag care indică dacă galaxia a fost clasificată ca spirală.
+
+ELLIPTICAL – Flag care indică dacă galaxia a fost clasificată ca elliptică.
+
+UNCERTAIN – Flag care indică dacă galaxia a fost clasificată ca incertă (nu este clar dacă este spirală, eliptică sau alt tip de galaxie).

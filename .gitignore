@@ -1,0 +1,23 @@
+# Ignoră toate fișierele temporare generate de sistem
+.DS_Store
+Thumbs.db
+
+# Ignoră fișierele compilate
+*.exe
+*.spec
+
+# Ignoră fișierele log și cache
+*.log
+*.cache
+*.tmp
+
+# Ignoră folderul de build
+**/build
+**/dist
+
+# Fisiere cache și virtual environment
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.env
