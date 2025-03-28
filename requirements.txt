@@ -1,0 +1,7 @@
+customtkinter==5.1.1
+tensorflow==2.11.0
+pandas==1.4.2
+numpy==1.21.0
+scikit-learn==1.0.2
+matplotlib==3.5.2
+pillow==9.1.0

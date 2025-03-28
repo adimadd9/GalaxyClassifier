@@ -73,6 +73,8 @@ project-folder/
 │   ├── preprocess.py          # Data preprocessing functions
 │   ├── model.py               # Model build function
 │   └── train.py               # Script for training the model
+│-- requirements.txt       # List of dependencies
+│-- README.md              # Project documentation
 ```
 
 ## Troubleshooting
