@@ -89,8 +89,13 @@ pyinstaller --onefile --windowed --add-data "model/galaxy_classifier.h5;model" -
 ```
 
 ### Data Source
-
 This project uses data from the **Galaxy Zoo** project, a citizen science initiative where volunteers classify galaxies. The dataset used in this project is publicly available for research and academic purposes. You can find more information about Galaxy Zoo and access the dataset [here](https://data.galaxyzoo.org).
+
+## Background and Icon Images
+The background image and the application icon used in this project were sourced from the following platforms:
+
+- **Background Image**: [NASA](https://images.nasa.gov/details/PIA16884)
+- **Icon**: [Flaticon](https://www.flaticon.com)
 
 ## License
 This project is released under the MIT License. - see the [LICENSE](./LICENSE) file for details.
