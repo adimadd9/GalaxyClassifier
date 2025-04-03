@@ -27,7 +27,7 @@ X_train, X_test, y_train, y_test = train_test_split(features_scaled, labels_cate
 model = build_model()
 
 # Train the model
-model.fit(X_train, y_train, epochs=50, batch_size=16, validation_data=(X_test, y_test))
+model.fit(X_train, y_train, epochs=50, batch_size=32, validation_data=(X_test, y_test))
 
 # Save the trained model
 model.save("model/galaxy_classifier.h5")
